@@ -24,11 +24,11 @@
 
 <body>
     <nav
-        class="bg-gradient-to-r from-[#2971b2] to-[#00368d] dark:bg-blue-600 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        class="bg-gradient-to-r from-[#2971b2] to-[#00368d] dark:bg-blue-900 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('posgrado/public/imgs/pie.gif') }}" class="h-20 w-20" alt="Posgrado FIE">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">POSGRADO FIE</span>
+                <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">POSGRADO FIE</span>
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <button type="button" id="userListOptions" onclick="dropListOptionsUser()"
