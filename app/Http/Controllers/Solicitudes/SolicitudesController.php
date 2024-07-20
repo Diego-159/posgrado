@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Solicitudes\PersonalesStoreRequest;
 use App\Models\Solicitudes\DatosPersonales;
+use App\Models\Solicitudes\DatosEstudios;
+use App\Http\Requests\Solicitudes\EstudiosStoreRequest;
 
 class SolicitudesController extends Controller
 {
@@ -30,8 +32,8 @@ class SolicitudesController extends Controller
         //$new_personales->foto = file_get_contents($foto->getRealPath());
         $new_personales->direccion = $request->direccion;
         $new_personales->save();
-        DB::table('mecanismouser')->insert(['id_user' => auth()->user()->id, 'id_mecanismo' => $request->mecanismo]);
-        return redirect()->route('solicitudes.estudios', ['programa' => $programa, 'mecanismo' => $request->mecanismo])->with('success', 'Datos personales guardados correctamente');
+        if ($programa === 'maestria') DB::table('mecanismouser')->insert(['id_user' => auth()->user()->id, 'id_mecanismo' => $request->mecanismo]);
+        return redirect()->route('solicitudes.estudios', ['programa' => $programa])->with('success', 'Datos personales guardados correctamente');
     }
 
     public function personalesUpdate($programa, PersonalesStoreRequest $request){
@@ -45,16 +47,25 @@ class SolicitudesController extends Controller
         $personales->bandera = $programa === 'doctorado' ? 1 : 0;
         $personales->direccion = $request->direccion;
         $personales->save();
-        DB::table('mecanismouser')->where('id_user', auth()->user()->id)->update(['id_mecanismo' => $request->mecanismo]);
-        return redirect()->route('solicitudes.estudios', ['programa' => $programa, 'mecanismo' => $request->mecanismo])->with('success', 'Datos personales editados correctamente');
+        if ($programa === 'maestria') DB::table('mecanismouser')->where('id_user', auth()->user()->id)->update(['id_mecanismo' => $request->mecanismo]);
+        return redirect()->route('solicitudes.estudios', ['programa' => $programa])->with('success', 'Datos personales editados correctamente');
     }
 
     //estudios
     public function estudios($programa){
-        $mecanismo = DB::table('mecanismoUser')->where('id_user', auth()->user()->id)->first()->id_mecanismo;
-        return view('solicitudes.estudios', ['programa' => $programa, 'mecanismo' => $mecanismo]);
+        return view('solicitudes.estudios', compact('programa'));
     }
 
+    public function estudiosStore($programa, EstudiosStoreRequest $request){
+        $request->validated();
+        dd($request->all());
+        $new_estudios = new DatosEstudios;
+        $new_estudios->save();
+        return redirect()->route('solicitudes.trabajo', compact('programa'))->with('success', 'Datos de estudios guardados correctamente');
+
+    }
+
+    //trabajo
     public function trabajo($programa){
         return view('solicitudes.trabajo', ['programa' => $programa]);
     }

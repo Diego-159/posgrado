@@ -16,7 +16,7 @@
             @if($programa === 'maestria')
             <div class="flex flex-col pb-4">
                 <label for="mecanismo">Escoge un Mecanismo</label>
-                <select name="mecanismo" id="mecanismo" class="rounded-xl w-1/5 font-normal px-4 py-2">
+                <select name="mecanismo" id="mecanismo" class="rounded-xl w-1/5 font-normal px-4 py-2" required>
                     <option value="" selected hidden>Selecciona un mecanismo</option>
                     <option value="1" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 1 ? 'selected' : '' : ''}}>Examen de admisión</option>
                     <option value="2" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 2  ? 'selected' : '' : ''}}>Curso propedéutico</option>

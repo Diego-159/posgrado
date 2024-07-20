@@ -26,43 +26,32 @@
         <form action="" method="POST" class="w-[90%] bg-[#b69f5c] rounded-2xl flex flex-col font-bold text-lg p-8">
             @csrf
             <div class="flex flex-col pb-4">
-                <label for="rama">Escoge un Programa</label>
-                <select name="rama" id="rama" class="rounded-xl w-1/5 font-normal px-4 py-2">
-                    <option value="" selected hidden>Selecciona un programa</option>
-                    <option value="1">Sistemas eléctricos</option>
-                    <option value="2">Sistemas de control</option>
-                    <option value="3">Sistemas computacionales</option>
-                </select>
-                @error('rama')
-                    <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="flex flex-col pb-4">
                 <label for="grado">Licenciatura:</label>
                 <input type="text" name="gradol" id="gradol"  class="rounded-xl w-1/5 font-normal px-4 py-2" placeholder="Licenciatura">
             </div>
             @error('grado')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
-        @if($mecanismo == (1 || 2) || $programa === 'doctorado')
+        @if(auth()->user()->mecanismo() == 1 || auth()->user()->mecanismo() == 2 || $programa === 'doctorado')
+                {{ $programa }}
             <div class="flex flex-col pb-4">
                 <label for="institucionl">Institución:</label>
-                <input type="texto" name="institucionl" id="institucionl" class="rounded-xl w-11/12 font-normal px-4 py-2" placeholder="Institución">
+                <input type="texto" name="institucionl" id="institucionl" class="rounded-xl w-11/12 font-normal px-4 py-2" placeholder="Institución" required>
             </div>
             @error('institucionl')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
-        @elseif($mecanismo == 3)
+        @elseif(auth()->user()->mecanismo() == 3)
         <div class="flex flex-col pb-4">
             <label for="num_extras">Número de exámenes extraordinarios:</label>
-            <input type="number" name="num_extras" id="num_extras" class="rounded-xl w-1/12 font-normal px-4 py-2" placeholder="0">
+            <input type="number" name="num_extras" id="num_extras" class="rounded-xl w-1/12 font-normal px-4 py-2" placeholder="0" required>
         </div>
         @error('num_extras')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
         <div class="flex flex-col pb-4">
             <label for="adi_cnval">{{ auth()->user()->FIE() ? 'Número de exámenes extraordinarios de regularización:' : 'Calificación del exámen CENEVAL EXANI III:'}}</label>
-            <input type="number" name="adi_cnval" id="adi_cnval" class="rounded-xl w-1/12 font-normal px-4 py-2" placeholder="0" {{ auth()->user()->FIE() ? '' : 'step="0.01"' }}>
+            <input type="number" name="adi_cnval" id="adi_cnval" class="rounded-xl w-1/12 font-normal px-4 py-2" placeholder="0" {{ auth()->user()->FIE() ? '' : 'step="0.01"' }} required>
         </div>
         @error('adi_cnval')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
@@ -101,35 +90,35 @@
             @csrf
             <div class="flex flex-col pb-4">
                 <label for="gradom">Maestria:</label>
-                <input type="texto" name="gradom" id="gradom" class="rounded-xl w-1/2 font-normal px-4 py-2" placeholder="Maestria">
+                <input type="texto" name="gradom" id="gradom" class="rounded-xl w-1/2 font-normal px-4 py-2" placeholder="Maestria" required>
             </div>
             @error('gradom')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="institucionm">Institucion:</label>
-                <input type="text" name="institucionm" id="institucionm" class="rounded-xl w-11/12 font-normal px-4 py-2" placeholder="123-456-7890">
+                <input type="text" name="institucionm" id="institucionm" class="rounded-xl w-11/12 font-normal px-4 py-2" placeholder="123-456-7890" required>
             </div>
             @error('institucionm')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="fecha_egresom">Fecha de Egreso:</label>
-                <input type="date" name="fecha_egresom" id="fecha_egresom" class="rounded-xl w-1/5 font-normal px-4 py-2" value="2000-01-01">
+                <input type="date" name="fecha_egresom" id="fecha_egresom" class="rounded-xl w-1/5 font-normal px-4 py-2" value="2000-01-01" required>
             </div>
             @error('fecha_egresom')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="fecha_titulacionm">Fecha de Titulación:</label>
-                <input type="date" name="fecha_titulacionm" id="fecha_titulacionm" class="rounded-xl w-1/5 font-normal px-4 py-2" value="2000-01-01">
+                <input type="date" name="fecha_titulacionm" id="fecha_titulacionm" class="rounded-xl w-1/5 font-normal px-4 py-2" value="2000-01-01" required>
             </div>
             @error('fecha_titulacionm')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="promediom">Promedio:</label>
-                <input type="number" name="promediom" id="promediom" class="rounded-xl w-1/12 font-normal px-4 py-2" step="0.01" placeholder="10.0">
+                <input type="number" name="promediom" id="promediom" class="rounded-xl w-1/12 font-normal px-4 py-2" step="0.01" placeholder="10.0" required>
                 @error('promediom')
                 <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
             @enderror

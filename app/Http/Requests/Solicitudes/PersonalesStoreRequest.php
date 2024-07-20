@@ -22,7 +22,7 @@ class PersonalesStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mecanismo' => 'required|integer',
+            'mecanismo' => 'integer',
             'nombre' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
             'estado_civil' => 'required|integer',

@@ -100,20 +100,3 @@ CREATE TABLE otrosestudios(
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES users(id)
 );
-
-//la bandera de datosPersonales es para el doctorado(1) o maestria(0)
-//en tabla datosestudios el grado es licenciatura(0) y maestria(1)
-
-
-//telefono de trabajo y telefono personal??
-//foto del pdf
-//que va en licenciatura
-//que va en maestria 
-//estos forms, form de archivos, vista de calificación del examen y notas de maestros
-
-
-//para maestros
-//ver lista de aspirantes
-//ver proceso de cada aspirante
-//subir calificación y notas
-//ver docs de aspirantes

@@ -57,7 +57,8 @@ class User extends Authenticatable
     }
 
     public function mecanismo(){
-        return DB::table('mecanismouser')->where('id_user', $this->id)->first()->id_mecanismo;
+        $mecanismo = DB::table('mecanismouser')->where('id_user', $this->id)->first();
+        return $mecanismo ? $mecanismo->id_mecanismo : null;
     }
     public function personales(){
         return DB::table('datospersonales')->where('id', $this->id)->first() ? true : false;
