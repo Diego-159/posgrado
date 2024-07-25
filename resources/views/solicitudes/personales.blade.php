@@ -13,20 +13,6 @@
         
         <form action="{{ is_null($personales) ? route('solicitudes.personales.store', ['programa' => $programa]) : route('solicitudes.personales.update', ['programa' => $programa]) }}" method="POST" class="w-[90%] bg-[#b69f5c] rounded-2xl flex flex-col font-bold text-lg p-8" enctype="multipart/form-data">
             @csrf
-            @if($programa === 'maestria')
-            <div class="flex flex-col pb-4">
-                <label for="mecanismo">Escoge un Mecanismo</label>
-                <select name="mecanismo" id="mecanismo" class="rounded-xl w-1/5 font-normal px-4 py-2" required>
-                    <option value="" selected hidden>Selecciona un mecanismo</option>
-                    <option value="1" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 1 ? 'selected' : '' : ''}}>Examen de admisión</option>
-                    <option value="2" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 2  ? 'selected' : '' : ''}}>Curso propedéutico</option>
-                    <option value="3" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 3 ? 'selected' : '' : ''}}>Ingreso por promedio</option>
-                </select>
-                @error('mecanismo')
-                    <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
-                @enderror
-            </div>
-            @endif
             <div class="flex flex-col pb-4">
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" value="{{ auth()->user()->name }}" class="rounded-xl w-1/2 font-normal px-4 py-2">

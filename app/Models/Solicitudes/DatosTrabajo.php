@@ -9,6 +9,7 @@ class DatosTrabajo extends Model
 {
     use HasFactory;
     protected $table = 'datosTrabajo';
+    public $timestamps = false;
     protected $fillable = [
         'ocupacion',
         'direccion',

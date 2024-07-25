@@ -15,10 +15,10 @@ Route::middleware('auth')->group(function () {
             return redirect()->route('solicitudes.personales', ['programa' => $programa]);
         }
         if (is_null(DatosEstudios::find(Auth::id()))) {
-            return redirect()->route('solicitudes.estudios', ['programa' => $programa]);
+            return redirect()->route('solicitudes.estudios');
         }
         if (is_null(DatosTrabajo::find(Auth::id()))) {
-            return redirect()->route('solicitudes.trabajo', ['programa' => $programa]);
+            return redirect()->route('solicitudes.trabajo');
         }
     })->name('solicitudes.index');
     //Personales
@@ -26,7 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/{programa}/personales', [SolicitudesController::class, 'personalesStore'])->name('solicitudes.personales.store');
     Route::post('/{programa}/personales/update', [SolicitudesController::class, 'personalesUpdate'])->name('solicitudes.personales.update');
     //Estudios
-    Route::get('/{programa}/estudios', [SolicitudesController::class, 'estudios'])->name('solicitudes.estudios');
+    Route::get('/estudios', [SolicitudesController::class, 'estudios'])->name('solicitudes.estudios');
+    Route::post('/estudios', [SolicitudesController::class, 'estudiosStore'])->name('solicitudes.estudios.store');
     //Trabajo
-    Route::get('/{programa}/trabajo', [SolicitudesController::class, 'trabajo'])->name('solicitudes.trabajo');
+    Route::get('/trabajo', [SolicitudesController::class, 'trabajo'])->name('solicitudes.trabajo');
 });

@@ -54,7 +54,6 @@ INSERT INTO mecanismo(mecanismo) VALUES('Examen de admisión');
 INSERT INTO mecanismo(mecanismo) VALUES('Curso propedéutico');
 INSERT INTO mecanismo(mecanismo) VALUES('Ingreso por promedio');
 
-ALTER TABLE datospersonales ADD COLUMN id_user INT(10) UNSIGNED NOT NULL; 
 
 CREATE TABLE datostrabajo(
     id INT(10) UNSIGNED NOT NULL,
@@ -68,13 +67,13 @@ CREATE TABLE datostrabajo(
 );
 
 CREATE TABLE datosestudios(
-    id INT(10) UNSIGNED NOT NULL,
+    id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     id_user INT(10) UNSIGNED NOT NULL,
-    grado TINYINT(1) UNSIGNED,
+    grado VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     fecha_egreso DATE,
     fecha_titulacion DATE,
     promedio FLOAT(5,2),
-    estudios varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    nivel BIT(1) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES users(id)
 );
@@ -91,8 +90,6 @@ CREATE TABLE examenes(
     adi_cnval FLOAT(5,2),
     FOREIGN KEY (id_estudios) REFERENCES datosestudios(id)
 );
-
-ALTER TABLE datosestudios DROP COLUMN estudios;
 
 CREATE TABLE otrosestudios(
     id INT(10) UNSIGNED NOT NULL,

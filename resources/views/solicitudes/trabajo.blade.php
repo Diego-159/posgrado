@@ -1,11 +1,11 @@
-@extends('layouts.nav', ['accion' => $programa])
+@extends('layouts.nav', ['accion' => auth()->user()->programa()])
 
 @section('content')
 <div class="flex flex-col justify-center items-center w-full my-8">
 <h2 class="text-2xl font-extrabold text-center p-4 text-blue-900 rounded-full border-2 border-[#b69f5c] m-4">3. Ocupación y Datos del Trabajo</h2>
     
     <div class="flex m-4">
-        <a class="ml-auto mx-8 rounded-2xl py-2 px-4 text-white bg-red-800" href="{{ route('solicitudes.estudios', ['programa'=> $programa]) }}">Regresar</a>
+        <a class="ml-auto mx-8 rounded-2xl py-2 px-4 text-white bg-red-800" href="{{ route('solicitudes.estudios') }}">Regresar</a>
 
         </div>
         <form action="" method="POST" class="w-[90%] bg-[#b69f5c] rounded-2xl flex flex-col font-bold text-lg p-8">

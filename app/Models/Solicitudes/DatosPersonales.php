@@ -18,5 +18,6 @@ class DatosPersonales extends Model
         'telefono', 
         'foto',
         'direccion', 
+        'programa',
     ];
 }
