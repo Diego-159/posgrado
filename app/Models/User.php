@@ -4,7 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Solicitudes\DatosEstudios;
 use App\Models\Solicitudes\DatosPersonales;
+use App\Models\Solicitudes\DatosTrabajo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -63,15 +65,18 @@ class User extends Authenticatable
         return $mecanismo ? $mecanismo->id_mecanismo : null;
     }
     public function personales(){
-        return DB::table('datospersonales')->where('id', $this->id)->first() ? true : false;
+        return DatosPersonales::find($this->id) ? true : false;
     }
     public function estudios(){
-        return DB::table('datosestudios')->where('id_user', $this->id)->first() ? true : false;
+        return DatosEstudios::where('id_user', $this->id)->first() ? true : false;
     }
     public function programa(){
         if(DatosPersonales::find($this->id)){
             return DatosPersonales::find($this->id)->programa == 1 ? 'doctorado' : 'maestria';
         }
         return null;
+    }
+    public function trabajo(){
+        return DatosTrabajo::find($this->id) ? true : false;
     }
 }

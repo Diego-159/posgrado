@@ -31,7 +31,7 @@ class UserController extends Controller
         }
     }
 
-    public function edit( $id){
+    public function edit($id){
         if($id != session('user')->id){
             Auth::logout();
             return redirect()->route('login');

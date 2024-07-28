@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
         if (is_null(DatosTrabajo::find(Auth::id()))) {
             return redirect()->route('solicitudes.trabajo');
         }
+        return redirect()->route('archivos.index');
     })->name('solicitudes.index');
     //Personales
     Route::get('/{programa}/personales', [SolicitudesController::class, 'personales'])->name('solicitudes.personales');
@@ -30,4 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/estudios', [SolicitudesController::class, 'estudiosStore'])->name('solicitudes.estudios.store');
     //Trabajo
     Route::get('/trabajo', [SolicitudesController::class, 'trabajo'])->name('solicitudes.trabajo');
+    Route::post('/trabajo', [SolicitudesController::class, 'trabajoStore'])->name('solicitudes.trabajo.store');
+    Route::post('/trabajo/update', [SolicitudesController::class, 'trabajoUpdate'])->name('solicitudes.trabajo.update');
 });

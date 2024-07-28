@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Solicitudes\PersonalesStoreRequest;
 use App\Models\Solicitudes\DatosPersonales;
 use App\Models\Solicitudes\DatosEstudios;
+use App\Models\Solicitudes\DatosTrabajo;
 use App\Http\Requests\Solicitudes\EstudiosStoreRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Solicitudes\TrabajoStoreRequest;
 
 class SolicitudesController extends Controller
 {
@@ -91,11 +93,29 @@ class SolicitudesController extends Controller
         }
         if (auth()->user()->programa() === 'maestria') DB::table('mecanismouser')->insert(['id_user' => auth()->user()->id, 'id_mecanismo' => $request->mecanismo]);
         return redirect()->route('solicitudes.trabajo')->with('success', 'Datos de estudios guardados correctamente');
-
     }
 
     //trabajo
     public function trabajo(){
-        return view('solicitudes.trabajo');
+        $trabajo = DatosTrabajo::find(auth()->user()->id);
+        return view('solicitudes.trabajo', compact('trabajo'));
+    }
+
+    public function trabajoStore(TrabajoStoreRequest $request){
+        $request->validated();
+        $new_trabajo = new DatosTrabajo;
+        $new_trabajo->id = auth()->user()->id;
+        $new_trabajo->ocupacion = $request->ocupacion;
+        $new_trabajo->direccion = $request->direccion;
+        $new_trabajo->ciudad = $request->ciudad;
+        $new_trabajo->estado = $request->estado;
+        $new_trabajo->telefono = $request->telefono;
+        $new_trabajo->save();
+        return redirect()->route('archivos.index')->with('success', 'Datos de trabajo guardados correctamente');
+    }
+
+    public function trabajoUpdate(TrabajoStoreRequest $request, DatosTrabajo $trabajo){
+        $trabajo->update($request->validated());
+        return redirect()->route('archivos.index')->with('success', 'Datos de trabajo editados correctamente');
     }
 }

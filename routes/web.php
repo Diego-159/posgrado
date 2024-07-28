@@ -17,6 +17,7 @@ require_once __DIR__ . '/web/users.php';
 require_once __DIR__ . '/web/maestria.php';
 require_once __DIR__ . '/web/doctorado.php';
 require_once __DIR__ . '/web/solicitudes.php';
+require_once __DIR__ . '/web/archivos.php';
 
 
 Route::get('/login', function () {

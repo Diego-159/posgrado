@@ -97,3 +97,5 @@ CREATE TABLE otrosestudios(
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES users(id)
 );
+
+ALTER TABLE datosPersonales CHANGE COLUMN bandera programa BIT(1) NOT NULL;
