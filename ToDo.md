@@ -26,12 +26,14 @@ Modificar formato de imagenes (cuando crezca la base de datos las consultas se h
 []estos forms, form de archivos, vista de calificación del examen y notas de maestros
 []arreglar foto de personales
 []arreglar la redireccion de solicitudes
+[]update de datos estudios
+[]agregar los porcentajes
 
 
 
 
 
-
+Modalidades
 -Maestria
     * Curso
         + num extras
@@ -45,3 +47,32 @@ Modificar formato de imagenes (cuando crezca la base de datos las consultas se h
         + institucion
 -Doctorado
     * institucion
+
+
+
+Documentos
+-Maestria
+    *Nacional
+        +Solicitud
+        +Titulo licenciatura
+        +Certificado
+        +Acta de nacimiento
+        +CURP
+        +INE
+        +3 Cartas recomendacion
+        +Examen CENEVAL
+    *Extranjero
+        +Documentos oficiales de promedio 
+        +Certificado examen DELE
+        +Orignal y copia acta
+        +Original y copia certificado
+        +Original y copia titulo
+        +Original y copia pasaporte
+        +Tarjet5a de residencia
+        +CURP
+-Dcotorado
+    *Nacional
+        +solicitud
+        +CURRICCULUM VITAE
+        +3 Cartas recomendacion
+        +Examen CENEVAL

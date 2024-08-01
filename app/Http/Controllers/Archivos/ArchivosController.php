@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Archivos;
 
 use App\Http\Controllers\Controller;
-use App\Models\Archivos\Documentos;
+use App\Models\Archivos\DocumentosMaestria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Mpdf\Mpdf;
 
 class ArchivosController extends Controller
 {
     public function index(){
-        $documentos = Documentos::where('id_user', auth()->user()->id)->first();
+        if(Auth::user()->programa() === 'maestria'){
+            $documentos = Auth::user()->pais == 1 ? DocumentosMaestria::where('id_user', auth()->user()->id)->first() : null;
+        }
         return view('archivos.index', compact('documentos'));
     }
 
@@ -18,10 +21,10 @@ class ArchivosController extends Controller
         $mpdf = new Mpdf([
 
             'format' => [216, 280],
-            'margin_left' => 0,
-            'margin_right' => 0,
-            'margin_top' => 0,
-            'margin_bottom' => 0,
+            'margin_left' => 20,
+            'margin_right' => 20,
+            'margin_top' => 25,
+            'margin_bottom' => 30,
             'margin_header' => 0,
             'margin_footer' => 0,
             'orientation' => 'P'

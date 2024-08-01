@@ -11,13 +11,13 @@ use App\Models\Solicitudes\DatosEstudios;
 Route::middleware('auth')->group(function () {
     Route::get('/solicitudes/{programa}', function () {
         $programa = request()->route('programa');
-        if (is_null(DatosPersonales::find(Auth::id()))) {
+        if (is_null(DatosPersonales::find(Auth::id())) || DatosPersonales::find(Auth::id())->porcentaje < 100) {
             return redirect()->route('solicitudes.personales', ['programa' => $programa]);
         }
-        if (is_null(DatosEstudios::find(Auth::id()))) {
+        if (is_null(DatosEstudios::where('id_user', Auth::id())->first()) || DatosEstudios::where('id_user', Auth::id())->first()->porcentaje < 100) {
             return redirect()->route('solicitudes.estudios');
         }
-        if (is_null(DatosTrabajo::find(Auth::id()))) {
+        if (is_null(DatosTrabajo::find(Auth::id())) || DatosTrabajo::find(Auth::id())->porcentaje < 100) {
             return redirect()->route('solicitudes.trabajo');
         }
         return redirect()->route('archivos.index');
