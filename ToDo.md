@@ -24,3 +24,4 @@
 []estos forms, form de archivos, vista de calificación del examen y notas de maestros
 []arreglar foto de personales
 []arreglar la redireccion de solicitudes
+definir lo de las imagenes porque entre mas datos mas tardada va a ser la consulta
