@@ -22,7 +22,6 @@ class PersonalesStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mecanismo' => 'integer',
             'nombre' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
             'estado_civil' => 'required|integer',
@@ -31,7 +30,7 @@ class PersonalesStoreRequest extends FormRequest
             'ciudad' => 'required|string|max:100',
             'estado' => 'required|string|max:100',
             'telefono' => 'required|string|max:16',
-            //'foto' => 'required|max:2048',//|mimes:jpeg,png,jpg,gif,svg',
+            'foto' => 'required|max:10000|mimes:jpeg,png,jpg',
         ];
     }
     public function messages()
@@ -58,9 +57,9 @@ class PersonalesStoreRequest extends FormRequest
             'telefono.required' => 'El campo teléfono es requerido.',
             'telefono.string' => 'El campo teléfono debe ser una cadena de texto.',
             'telefono.max' => 'El campo teléfono no debe exceder los 16 caracteres.',
-            //'foto.required' => 'El campo foto es requerido.',
-            //'foto.mimes' => 'El campo foto debe ser una imagen de tipo: jpeg, png, jpg, gif, svg.',
-            //'foto.max' => 'El campo foto no debe exceder los 2048 kilobytes.',
+            'foto.required' => 'El campo foto es requerido.',
+            'foto.mimes' => 'El campo foto debe ser una imagen de tipo: jpeg, png, jpg.',
+            'foto.max' => 'El campo foto no debe exceder los 10000kb.',
         ];
     }
 }

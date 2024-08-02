@@ -54,7 +54,6 @@ INSERT INTO mecanismo(mecanismo) VALUES('Examen de admisión');
 INSERT INTO mecanismo(mecanismo) VALUES('Curso propedéutico');
 INSERT INTO mecanismo(mecanismo) VALUES('Ingreso por promedio');
 
-ALTER TABLE datospersonales ADD COLUMN id_user INT(10) UNSIGNED NOT NULL; 
 
 CREATE TABLE datostrabajo(
     id INT(10) UNSIGNED NOT NULL,
@@ -68,13 +67,13 @@ CREATE TABLE datostrabajo(
 );
 
 CREATE TABLE datosestudios(
-    id INT(10) UNSIGNED NOT NULL,
+    id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     id_user INT(10) UNSIGNED NOT NULL,
-    grado TINYINT(1) UNSIGNED,
+    grado VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     fecha_egreso DATE,
     fecha_titulacion DATE,
     promedio FLOAT(5,2),
-    estudios varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    nivel BIT(1) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES users(id)
 );
@@ -92,11 +91,30 @@ CREATE TABLE examenes(
     FOREIGN KEY (id_estudios) REFERENCES datosestudios(id)
 );
 
-ALTER TABLE datosestudios DROP COLUMN estudios;
-
 CREATE TABLE otrosestudios(
     id INT(10) UNSIGNED NOT NULL,
     estudios VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES users(id)
+);
+
+ALTER TABLE datosPersonales CHANGE COLUMN bandera programa BIT(1) NOT NULL;
+ALTER TABLE datospersonales ADD COLUMN porcentaje FLOAT(5,2) NOT NULL;
+ALTER TABLE datostrabajo ADD COLUMN porcentaje FLOAT(5,2) NOT NULL;
+ALTER TABLE datosestudios ADD COLUMN porcentaje FLOAT(5,2) NOT NULL;
+DROP TABLE documentos;
+
+CREATE TABLE documentosMaestria(
+    id_user INT(10) UNSIGNED NOT NULL,
+    solicitud VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    titulo VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    certificado VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    acta VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    curp VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    ine VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    recomendacion1 VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    recomendacion2 VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    recomendacion3 VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    examen VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES users(id)
 );

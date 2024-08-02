@@ -6,9 +6,9 @@
             <p class="text-xl font-extrabold pb-4">Examen de admisión</p>
             <p class="text-sm pb-4">Consta de presentar y acreditar el examen, sobre cuatro temas (dos temas comunes para las tres opciones y dos temas dependiendo la opción a seleccionar).</p>
             <ul>
-                <li>-Temas comunes: <a href="#">Matemáticas</a> y <a href="#">Métodos numéricos</a></li>
-                <li>-Temas de Sistemas de control y Sistemas eléctricos: <a href="#">Control automático</a> y <a href="#">Teoría de Circuitos</a></li>
-                <li>-Temas de Sistemas Computacionales: <a href="#">Matemáticas discretas</a>, <a href="#">Programación</a> y <a href="#">Estructura de datos</a></li>
+                <li>-Temas comunes: <a href="{{ asset('posgrado/public/guias/PropeMatematicas.pdf') }}">Matemáticas</a> y <a href="{{ asset('posgrado/public/guias/PropeMetodosNumericos_Computacion.pdf') }}">Métodos numéricos</a></li>
+                <li>-Temas de Sistemas de control y Sistemas eléctricos: <a href="{{ asset('posgrado/public/guias/PropeControlAutomatico.pdf') }}">Control automático</a> y <a href="{{ asset('posgrado/public/guias/PropeTeoriaCircuitos.pdf') }}">Teoría de Circuitos</a></li>
+                <li>-Temas de Sistemas Computacionales: <a href="{{ asset('posgrado/public/guias/PropeMatematicasDiscretas.pdf') }}">Matemáticas discretas</a>, <a href="{{ asset('posgrado/public/guias/PropeProgramacionEstructuraDatos.pdf') }}">Programación</a> y <a href="{{ asset('posgrado/public/guias/PropeProgramacionEstructuraDatos.pdf') }}">Estructura de datos</a></li>
             </ul>
         </div>
         <div class="bg-gray-300 rounded-2xl p-8 shadow-lg shadow-[#b69f5c] text-center">

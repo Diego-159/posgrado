@@ -1,4 +1,4 @@
-@extends('layouts.nav', ['accion' => $programa])
+@extends('layouts.nav', ['accion' => auth()->user()->programa() ])
 
 @section('content')
 <style>
@@ -18,13 +18,27 @@
     @endif
     <h2 class="text-2xl font-extrabold text-center p-4 text-blue-900 rounded-full border-2 border-[#b69f5c] m-4">2. Estudios Realizados</h2>
         <div class="flex m-4">
-        <a class="ml-auto mx-8 rounded-2xl py-2 px-4 text-white bg-red-800 font-bold" href="{{ route('solicitudes.personales', ['programa' => $programa]) }}">Regresar</a>
+        <a class="ml-auto mx-8 rounded-2xl py-2 px-4 text-white bg-red-800 font-bold" href="{{ route('solicitudes.personales', ['programa' => auth()->user()->programa()]) }}">Regresar</a>
         @if(auth()->user()->estudios())
-        <a class="ml-auto mx-8 rounded-2xl py-2 px-4 text-white bg-blue-900" href="{{ route('solicitudes.trabajo', ['programa' => $programa]) }}">Siguiente</a>
+        <a class="ml-auto mx-8 rounded-2xl py-2 px-4 text-white bg-blue-900" href="{{ route('solicitudes.trabajo') }}">Siguiente</a>
         @endif
         </div>
-        <form action="" method="POST" class="w-[90%] bg-[#b69f5c] rounded-2xl flex flex-col font-bold text-lg p-8">
+        <form action="{{ route('solicitudes.estudios.store') }}" method="POST" class="w-[90%] bg-[#b69f5c] rounded-2xl flex flex-col font-bold text-lg p-8">
             @csrf
+            @if(auth()->user()->programa() === 'maestria')
+            <div class="flex flex-col pb-4">
+                <label for="mecanismo">Escoge un Mecanismo</label>
+                <select name="mecanismo" id="mecanismo" class="rounded-xl w-1/5 font-normal px-4 py-2" required>
+                    <option value="" selected hidden>Selecciona un mecanismo</option>
+                    <option value="1" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 1 ? 'selected' : '' : ''}}>Examen de admisión</option>
+                    <option value="2" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 2  ? 'selected' : '' : ''}}>Curso propedéutico</option>
+                    <option value="3" {{ !is_null(auth()->user()->mecanismo()) ? auth()->user()->mecanismo() == 3 ? 'selected' : '' : ''}}>Ingreso por promedio</option>
+                </select>
+                @error('mecanismo')
+                    <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
+                @enderror
+            </div>
+            @endif
             <div class="flex flex-col pb-4">
                 <label for="grado">Licenciatura:</label>
                 <input type="text" name="gradol" id="gradol"  class="rounded-xl w-1/5 font-normal px-4 py-2" placeholder="Licenciatura">
@@ -32,8 +46,7 @@
             @error('grado')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
-        @if(auth()->user()->mecanismo() == 1 || auth()->user()->mecanismo() == 2 || $programa === 'doctorado')
-                {{ $programa }}
+        @if(auth()->user()->mecanismo() == 1 || auth()->user()->mecanismo() == 2 || auth()->user()->programa() === 'doctorado')
             <div class="flex flex-col pb-4">
                 <label for="institucionl">Institución:</label>
                 <input type="texto" name="institucionl" id="institucionl" class="rounded-xl w-11/12 font-normal px-4 py-2" placeholder="Institución" required>
@@ -86,7 +99,7 @@
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
 
-    @if($programa === 'doctorado')
+    @if(auth()->user()->programa() === 'doctorado')
             @csrf
             <div class="flex flex-col pb-4">
                 <label for="gradom">Maestria:</label>
