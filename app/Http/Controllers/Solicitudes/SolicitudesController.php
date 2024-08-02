@@ -22,6 +22,7 @@ class SolicitudesController extends Controller
     }
 
     public function personalesStore($programa, PersonalesStoreRequest $request){
+        //dd($request->all());
         $request->validated();
         $foto = $request->file('foto');
         $new_personales = new DatosPersonales;
@@ -32,8 +33,9 @@ class SolicitudesController extends Controller
         $new_personales->estado = $request->estado;
         $new_personales->telefono = $request->telefono;
         $new_personales->programa = $programa === 'doctorado' ? 1 : 0;
-        $new_personales->foto = file_get_contents($foto->getRealPath());
+        //$new_personales->foto = file_get_contents($foto->getRealPath());
         $new_personales->direccion = $request->direccion;
+        $new_personales->porcentaje= 20;
         $new_personales->save();
         return redirect()->route('solicitudes.estudios')->with('success', 'Datos personales guardados correctamente');
     }
@@ -110,6 +112,7 @@ class SolicitudesController extends Controller
         $new_trabajo->ciudad = $request->ciudad;
         $new_trabajo->estado = $request->estado;
         $new_trabajo->telefono = $request->telefono;
+        $new_trabajo->porcentaje= 20;
         $new_trabajo->save();
         return redirect()->route('archivos.index')->with('success', 'Datos de trabajo guardados correctamente');
     }
