@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Archivos;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Archivos\ArchivosRequest;
 use App\Models\Archivos\DocumentosMaestria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,5 +34,9 @@ class ArchivosController extends Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output("Solicitud.pdf", "I");
         return view('archivos.solicitud_pdf');
+    }
+
+    public function store(ArchivosRequest $request){
+        $request->validated();
     }
 }

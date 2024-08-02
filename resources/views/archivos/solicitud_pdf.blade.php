@@ -70,25 +70,50 @@
         1. DATOS PERSONALES
     </div>
     <div class="informacion">
-       <p> Nombre: <span style="text-decoration: underline;">Ejemplo</span></p>
-       <p> Fecha de nacimiento: <span style="text-decoration: underline;">01/01/2001 </span>Estado civil: <span style="text-decoration: underline;">Ejemplo</span></p>
-       <p> E-mail: <span style="text-decoration: underline;">Ejemplo</span></p>
-       <p> Direccion postal para correspondencia: <span style="text-decoration: underline;">Ejemplo</span></p>
-       <p> Ciudad: <span style="text-decoration: underline;">Ejemplo</span>Estado: <span style="text-decoration: underline;">Ejemplo</span>Teléfono: <span style="text-decoration: underline;">Ejemplo</span></p>
+	<table style="font-size: 0.7em; font-weight: bold;">
+	
+    <tr>
+        <td><p> Nombre: <span style="text-decoration: underline;">Ejemplo</span></p></td>
+        <td></td>
+	    <td rowspan="5">FOTO</td>
+    </tr>
+	<tr>
+        <td>Fecha de nacimiento: <span style="text-decoration: underline;">01/01/2001 </span></td>
+	    <td>Estado civil: <span style="text-decoration: underline;">Ejemplo</span></p></td>
+	</tr>	
+	
+    <tr>
+	    <td><p> E-mail: <span style="text-decoration: underline;">Ejemplo</span></p></td>
+	</tr>
+	<tr>
+	    <td><p> Direccion postal para correspondencia: <span style="text-decoration: underline;">Ejemplo</span></p></td>
+	</tr>
+	<tr>
+	    <td>Ciudad: <span style="text-decoration: underline;">Ejemplo</span></td>
+	    <td>Estado: <span style="text-decoration: underline;">Ejemplo</span></td>
+	    <td>Teléfono: <span style="text-decoration: underline;">Ejemplo</span></td>
+	</tr>
+	
+    </table>
     </div>
+    
     <div class="titulo">
         2. OPCIÓN DEL PROGRAMA
     </div>
 
     <div class="informacion">
-        <table>
+        <table align="center" style= "font-size: 0.7em; font-weight: bold;">
             <tr>
-                <td>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file" viewBox="0 0 16 16">
-  <path fill=blue d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
+                <td><svg xmlns="http://www.w3.org/2000/svg" width="26" height="16" fill="currentColor" class="bi bi-file" viewBox="0 0 16 16">
+  <path fill="blue" d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
 </svg>SISTEMAS ELÉCTRICOS</td>
-                <td>SISTEMAS DE CONTROL</td>
-                <td>SISTEMAS COMPUTACIONALES</td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" width="26" height="16" fill="currentColor" class="bi bi-file-check" viewBox="0 0 16 16">
+  <path fill='blue' d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
+</svg>SISTEMAS DE CONTROL</td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" width="26" height="16" fill="currentColor" class="bi bi-file" viewBox="0 0 16 16">
+  <path fill='blue' d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1"/>
+</svg>SISTEMAS COMPUTACIONALES</td>
             </tr>
         </table>
     </div>
