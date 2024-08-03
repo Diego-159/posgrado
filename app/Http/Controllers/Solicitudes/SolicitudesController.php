@@ -50,7 +50,7 @@ class SolicitudesController extends Controller
         $personales->estado = $request->estado;
         $personales->telefono = $request->telefono;
         $personales->programa = $programa === 'doctorado' ? 1 : 0;
-        $personales->foto = file_get_contents($foto->getRealPath());
+        //$personales->foto = file_get_contents($foto->getRealPath());
         $personales->direccion = $request->direccion;
         $personales->save();
         return redirect()->route('solicitudes.estudios')->with('success', 'Datos personales editados correctamente');
