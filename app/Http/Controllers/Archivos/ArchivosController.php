@@ -19,7 +19,7 @@ class ArchivosController extends Controller
     }
 
     public function solicitud(){
-        $mpdf = new \Mpdf\Mpdf([
+        $mpdf = new Mpdf([
 
             'format' => [216, 280],
             'margin_left' => 20,
