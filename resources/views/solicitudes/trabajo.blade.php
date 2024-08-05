@@ -14,7 +14,7 @@
         @endif
 
         </div>
-        <form action="{{ is_null($trabajo) ? route('solicitudes.trabajo.store') : route('solicitudes.trabajo.update') }}" method="POST" class="w-[90%] bg-[#b69f5c] rounded-2xl flex flex-col font-bold text-lg p-8">
+        <form id="formTrabajo" action="{{ is_null($trabajo) ? route('solicitudes.trabajo.store') : route('solicitudes.trabajo.update') }}" method="POST" class="w-[90%] bg-[#b69f5c] rounded-2xl flex flex-col font-bold text-lg p-8">
             @csrf
             <div class="flex flex-col pb-4">
                 <label for="ocupacion">Ocupación Actual:</label>
@@ -62,13 +62,50 @@
             var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
             e.target.value = !x[2] ? x[1] : '' + x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
         });
-
         
         const success = document.getElementById('success');
         const closeSuccess = document.getElementById('closeSuccess');
         closeSuccess.addEventListener('click', () => {
             success.style.display = 'none';
         });
+    </script>
+    <script>
+        const trabajo = <?php echo json_encode($trabajo); ?>;
+        if (trabajo === null) {
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('formTrabajo');
+    
+            form.ocupacion.value = localStorage.getItem('ocupacion') || '';
+            form.direccion.value = localStorage.getItem('direccion') || '';
+            form.ciudad.value = localStorage.getItem('ciudad') || '';
+            form.estado.value = localStorage.getItem('estado') || '';
+            form.telefono.value = localStorage.getItem('telefono') || '';
+    
+            form.ocupacion.addEventListener('input', function () {
+                localStorage.setItem('ocupacion', form.ocupacion.value);
+            });
+            form.direccion.addEventListener('input', function () {
+                localStorage.setItem('direccion', form.direccion.value);
+            });
+            form.ciudad.addEventListener('input', function () {
+                localStorage.setItem('ciudad', form.ciudad.value);
+            });
+            form.estado.addEventListener('input', function () {
+                localStorage.setItem('estado', form.estado.value);
+            });
+            form.telefono.addEventListener('input', function () {
+                localStorage.setItem('telefono', form.telefono.value);
+            });
+    
+            form.addEventListener('submit', function () {
+                localStorage.removeItem('ocupacion');
+                localStorage.removeItem('direccion');
+                localStorage.removeItem('ciudad');
+                localStorage.removeItem('estado');
+                localStorage.removeItem('telefono');
+            });
+        });
+        }
     </script>
 
 @endsection

@@ -118,3 +118,141 @@ CREATE TABLE documentosMaestria(
     examen VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     FOREIGN KEY (id_user) REFERENCES users(id)
 );
+
+DELIMITER //
+
+CREATE TRIGGER before_trabajo_insert
+BEFORE INSERT ON datosTrabajo
+FOR EACH ROW
+BEGIN
+    DECLARE total_columns INT DEFAULT 5;
+    DECLARE non_null_columns INT DEFAULT 0;
+
+    IF NEW.ocupacion IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.direccion IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.ciudad IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.estado IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.telefono IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+
+    SET NEW.porcentaje = (non_null_columns / total_columns) * 100;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER before_trabajo_update
+BEFORE UPDATE ON datosTrabajo
+FOR EACH ROW
+BEGIN
+    DECLARE total_columns INT DEFAULT 5;
+    DECLARE non_null_columns INT DEFAULT 0;
+
+    IF NEW.ocupacion IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.direccion IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.ciudad IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.estado IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.telefono IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+
+    SET NEW.porcentaje = (non_null_columns / total_columns) * 100;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER before_personales_insert
+BEFORE INSERT ON datosPersonales
+FOR EACH ROW
+BEGIN
+    DECLARE total_columns INT DEFAULT 8;
+    DECLARE non_null_columns INT DEFAULT 0;
+
+    IF NEW.fecha_nacimiento IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.estado_civil IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.direccion IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.ciudad IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.estado IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.telefono IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.foto IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.programa IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+
+    SET NEW.porcentaje = (non_null_columns / total_columns) * 100;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER before_personales_update
+BEFORE UPDATE ON datosPersonales
+FOR EACH ROW
+BEGIN
+    DECLARE total_columns INT DEFAULT 8;
+    DECLARE non_null_columns INT DEFAULT 0;
+
+    IF NEW.fecha_nacimiento IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.estado_civil IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.direccion IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.ciudad IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.estado IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.telefono IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.foto IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+    IF NEW.programa IS NOT NULL THEN
+        SET non_null_columns = non_null_columns + 1;
+    END IF;
+
+    SET NEW.porcentaje = (non_null_columns / total_columns) * 100;
+END //
+
+DELIMITER ;

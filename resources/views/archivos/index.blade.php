@@ -260,12 +260,9 @@
                         <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                     @enderror
                 @else
-                @php
-                    $i = 1;
-                @endphp
-                @foreach ($docuemntos->recomendaciones as $recomendacion)
+                @foreach ($documentos->recomendaciones as $recomendacion)
                 <div class="flex felx-col justify-center text-center items-center">
-                Recomendación {{ $i++ }}
+                Recomendación {{ $loop->index + 1 }}
                 <div class="flex space-x-2">
                     <a
                         href="#">

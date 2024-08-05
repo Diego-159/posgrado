@@ -13,7 +13,7 @@
 //se puede pasar de maestria a doctorado ? se reinicia proceso o q?? : ¿que procd? se oculta todo lo de doctorado??
 //comparar alumnos de la fie mediante los correos institucionales (para separar de otras carreras a fin de que igual pertenezcan a la michoacana)
 
-Modificar formato de imagenes (cuando crezca la base de datos las consultas se haran mas pesadas y lentas) 
+Modificar formato de imagenes (cuando crezca la base de datos las consultas se haran mas pesadas y lentas)
 
 
 -Por hacer
@@ -25,12 +25,11 @@ Modificar formato de imagenes (cuando crezca la base de datos las consultas se h
 []ver docs de aspirantes
 []estos forms, form de archivos, vista de calificación del examen y notas de maestros
 []arreglar foto de personales
-[]arreglar la redireccion de solicitudes
 <<<<<<< HEAD
 definir lo de las imagenes porque entre mas datos mas tardada va a ser la consulta
 =======
 []update de datos estudios
-[]agregar los porcentajes
+[]agregar el porcentaje de estudios
 
 
 
