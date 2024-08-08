@@ -30,6 +30,7 @@ class ArchivosController extends Controller
             'margin_footer' => 0,
             'orientation' => 'P'
         ]);
+        $mpdf->useActiveForms = true;
         $html = view('archivos.solicitud_pdf')->render();
         $mpdf->WriteHTML($html);
         $mpdf->Output("Solicitud.pdf", "I");

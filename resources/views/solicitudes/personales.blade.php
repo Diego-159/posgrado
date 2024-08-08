@@ -76,9 +76,24 @@
                 @enderror
             </div>
             <div class="flex flex-col pb-4">
+                <label for="foto">Foto:</label>
+                @if(is_null($personales) && is_null($personales->foto))
                 <input id="foto" name="foto"
                 class="float-left block w-1/2 text-sm text-black border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 type="file" accept="image/*">
+                @else
+                @php
+                    $blob = auth()->user()->datosPersonales()->foto;
+                    $foto = base64_encode($blob);
+                @endphp
+                <div id="fotoSubida">
+                    <input id="fotoedit" name="foto"
+                class="hidden float-left w-1/2 text-sm text-black border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                type="file" accept="image/*" value="data:image/png;base64,{{ $foto }}">
+                    <button type="button" onclick="editFoto()" class="absolute top-0 right-0">x</button>
+                    <img class="relative" width="100" height="100" src="data:image/png;base64,{{ $foto }}"/>
+                </div>
+                @endif
                 @error('foto')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
@@ -108,6 +123,10 @@
             }
             reader.readAsDataURL(file);
         });
+        function editFoto() {
+            document.getElementById('fotoSubida').style.display = 'none';
+            
+        }
 </script>
 
 @endsection

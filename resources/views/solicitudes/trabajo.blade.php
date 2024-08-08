@@ -18,35 +18,35 @@
             @csrf
             <div class="flex flex-col pb-4">
                 <label for="ocupacion">Ocupación Actual:</label>
-                <input type="text" name="ocupacion" id="ocupacion"  class="rounded-xl w-1/2 font-normal" placeholder="Ocupación" value="{{ is_null($trabajo) ? '' : $trabajo->ocupacion }}">
+                <input type="text" name="ocupacion" id="ocupacion"  class="rounded-xl w-1/2 font-normal px-4 py-2" placeholder="Ocupación" value="{{ is_null($trabajo) ? '' : $trabajo->ocupacion }}">
             </div>
             @error('ocupacion')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="direccion">Dirección Postal:</label>
-                <input type="texto" name="direccion" id="direccion" class="rounded-xl w-11/12 font-normal" placeholder="Nombre Calle #123, Nombre Colonia, C.P.12345" value="{{ is_null($trabajo) ? '' : $trabajo->direccion }}">
+                <input type="texto" name="direccion" id="direccion" class="rounded-xl w-11/12 font-normal px-4 py-2" placeholder="Nombre Calle #123, Nombre Colonia, C.P.12345" value="{{ is_null($trabajo) ? '' : $trabajo->direccion }}">
             </div>
             @error('direccion')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="ciudad">Ciudad:</label>
-                <input type="texto" name="ciudad" id="ciudad" class="rounded-xl w-1/5 font-normal" placeholder="Ciudad" value="{{ is_null($trabajo) ? '' : $trabajo->ciudad }}">
+                <input type="texto" name="ciudad" id="ciudad" class="rounded-xl w-1/5 font-normal px-4 py-2" placeholder="Ciudad" value="{{ is_null($trabajo) ? '' : $trabajo->ciudad }}">
             </div>
             @error('ciudad')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="estado">Estado:</label>
-                <input type="texto" name="estado" id="estado" class="rounded-xl w-1/5 font-normal" placeholder="Estado" value="{{ is_null($trabajo) ? '' : $trabajo->estado }}">
+                <input type="texto" name="estado" id="estado" class="rounded-xl w-1/5 font-normal px-4 py-2" placeholder="Estado" value="{{ is_null($trabajo) ? '' : $trabajo->estado }}">
             </div>
             @error('estado')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>
                 @enderror
             <div class="flex flex-col pb-4">
                 <label for="telefono">Telefono:</label>
-                <input type="texto" name="telefono" id="telefono" class="rounded-xl w-1/5 font-normal" placeholder="123-456-7890" value="{{ is_null($trabajo) ? '' : $trabajo->telefono }}">
+                <input type="texto" name="telefono" id="telefono" class="rounded-xl w-1/5 font-normal px-4 py-2" placeholder="123-456-7890" value="{{ is_null($trabajo) ? '' : $trabajo->telefono }}">
             </div>
             @error('telefono')
                     <span class="text-red-500 text-sm font-extralight">{{ $message }}</span>

@@ -20,4 +20,16 @@ class DatosPersonales extends Model
         'direccion', 
         'programa',
     ];
+
+    public function estado_civil(){
+        if($this->estado_civil == 1){
+            return 'Soltero';
+        }elseif($this->estado_civil == 2){
+            return 'Casado';
+        }elseif($this->estado_civil == 3){
+            return 'Divorciado';
+        }elseif($this->estado_civil == 4){
+            return 'Viudo';
+        }
+    }
 }

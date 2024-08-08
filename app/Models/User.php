@@ -79,4 +79,13 @@ class User extends Authenticatable
     public function trabajo(){
         return DatosTrabajo::find($this->id) ? true : false;
     }
+    public function datosPersonales(){
+        return DatosPersonales::find($this->id);
+    }
+    public function datosEstudios(){
+        return DatosEstudios::where('id_user', $this->id)->first();
+    }
+    public function datosTrabajo(){
+        return DatosTrabajo::find($this->id);
+    }
 }
